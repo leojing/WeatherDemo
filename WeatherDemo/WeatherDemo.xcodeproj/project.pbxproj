@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		248897AC204AB0E0008F9DFE /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 248897AB204AB0E0008F9DFE /* Launch Screen.storyboard */; };
 		24C44716204A43F5005024DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C44715204A43F5005024DC /* AppDelegate.swift */; };
 		24C4471B204A43F5005024DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24C44719204A43F5005024DC /* Main.storyboard */; };
 		24C4471D204A43F5005024DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24C4471C204A43F5005024DC /* Assets.xcassets */; };
-		24C44720204A43F5005024DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24C4471E204A43F5005024DC /* LaunchScreen.storyboard */; };
 		24C4472B204A43F6005024DC /* WeatherDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4472A204A43F6005024DC /* WeatherDemoTests.swift */; };
 		24C44736204A43F6005024DC /* WeatherDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C44735204A43F6005024DC /* WeatherDemoUITests.swift */; };
 		24C4476A204A5C66005024DC /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C44765204A5C66005024DC /* WeatherViewController.swift */; };
@@ -51,11 +51,11 @@
 		0F639D3FEBB79003124F9896 /* Pods_WeatherDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		11CF7B9591258C96B97451D1 /* Pods_WeatherDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		23E5EA7842E808CEF6176BBA /* Pods-WeatherDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherDemoTests/Pods-WeatherDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		248897AB204AB0E0008F9DFE /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		24C44712204A43F5005024DC /* WeatherDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24C44715204A43F5005024DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24C4471A204A43F5005024DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		24C4471C204A43F5005024DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		24C4471F204A43F5005024DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		24C44721204A43F5005024DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24C44726204A43F6005024DC /* WeatherDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24C4472A204A43F6005024DC /* WeatherDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDemoTests.swift; sourceTree = "<group>"; };
@@ -151,8 +151,8 @@
 				24C44765204A5C66005024DC /* WeatherViewController.swift */,
 				24C44715204A43F5005024DC /* AppDelegate.swift */,
 				24C44719204A43F5005024DC /* Main.storyboard */,
+				248897AB204AB0E0008F9DFE /* Launch Screen.storyboard */,
 				24C4471C204A43F5005024DC /* Assets.xcassets */,
-				24C4471E204A43F5005024DC /* LaunchScreen.storyboard */,
 				24C44721204A43F5005024DC /* Info.plist */,
 			);
 			path = WeatherDemo;
@@ -299,7 +299,7 @@
 				TargetAttributes = {
 					24C44711204A43F5005024DC = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					24C44725204A43F6005024DC = {
 						CreatedOnToolsVersion = 9.2;
@@ -338,8 +338,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24C44720204A43F5005024DC /* LaunchScreen.storyboard in Resources */,
 				24C4471D204A43F5005024DC /* Assets.xcassets in Resources */,
+				248897AC204AB0E0008F9DFE /* Launch Screen.storyboard in Resources */,
 				24C4471B204A43F5005024DC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -537,14 +537,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		24C4471E204A43F5005024DC /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				24C4471F204A43F5005024DC /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -660,12 +652,14 @@
 			baseConfigurationReference = 98468E36796B52263664FDAC /* Pods-WeatherDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 98P3G87Q6Y;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WeatherDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JINGLUO.WeatherDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -676,12 +670,14 @@
 			baseConfigurationReference = 7738CF54AACB078E3F7C6FC1 /* Pods-WeatherDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 98P3G87Q6Y;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WeatherDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JINGLUO.WeatherDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
