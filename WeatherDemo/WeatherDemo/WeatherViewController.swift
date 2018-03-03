@@ -12,6 +12,9 @@ import RxCocoa
 
 class WeatherViewController: UITableViewController {
 
+    enum SegueIdentifiers {
+        static let showWeatherDetail = "showDetail"
+    }
     private let defaultCityList = ["4163971", "2147714", "2174003"]
 
     fileprivate let disposeBag = DisposeBag()
@@ -28,6 +31,14 @@ class WeatherViewController: UITableViewController {
         viewModel = WeatherListViewModel(defaultCityList)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueIdentifiers.showWeatherDetail,
+            let destination = segue.destination as? WeatherDetailViewController {
+            let vm = sender as? WeatherCellViewModel
+            destination.viewModel = vm
+        }
+    }
+    
     fileprivate func setupUI() {
         let refreshButtonItem = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(refreshAction))
         navigationItem.rightBarButtonItem = refreshButtonItem
@@ -38,6 +49,13 @@ class WeatherViewController: UITableViewController {
     fileprivate func setupTableView() {
         tableView.estimatedRowHeight = 40
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        tableView.rx.itemSelected
+            .subscribe(onNext: { indexPath in
+                let cell = self.tableView.cellForRow(at: indexPath) as! WeatherTableViewCell
+                let viewModel = cell.viewModel
+                self.performSegue(withIdentifier: SegueIdentifiers.showWeatherDetail, sender: viewModel)
+            }).disposed(by: disposeBag)
     }
     
     fileprivate func setupViewModelBinds() {

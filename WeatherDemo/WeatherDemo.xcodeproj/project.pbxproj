@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		248897AC204AB0E0008F9DFE /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 248897AB204AB0E0008F9DFE /* Launch Screen.storyboard */; };
+		248E358D204ACBE500837167 /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E358C204ACBE500837167 /* WeatherDetailViewController.swift */; };
+		248E3592204AE3AB00837167 /* Date+Customise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E3590204AE3AB00837167 /* Date+Customise.swift */; };
 		24C44716204A43F5005024DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C44715204A43F5005024DC /* AppDelegate.swift */; };
 		24C4471B204A43F5005024DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24C44719204A43F5005024DC /* Main.storyboard */; };
 		24C4471D204A43F5005024DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24C4471C204A43F5005024DC /* Assets.xcassets */; };
@@ -52,6 +54,8 @@
 		11CF7B9591258C96B97451D1 /* Pods_WeatherDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		23E5EA7842E808CEF6176BBA /* Pods-WeatherDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherDemoTests/Pods-WeatherDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		248897AB204AB0E0008F9DFE /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		248E358C204ACBE500837167 /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
+		248E3590204AE3AB00837167 /* Date+Customise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Customise.swift"; sourceTree = "<group>"; };
 		24C44712204A43F5005024DC /* WeatherDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24C44715204A43F5005024DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24C4471A204A43F5005024DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -119,6 +123,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		248E358E204AE39B00837167 /* Utilis */ = {
+			isa = PBXGroup;
+			children = (
+				248E3590204AE3AB00837167 /* Date+Customise.swift */,
+			);
+			path = Utilis;
+			sourceTree = "<group>";
+		};
 		24C44709204A43F5005024DC = {
 			isa = PBXGroup;
 			children = (
@@ -144,12 +156,14 @@
 		24C44714204A43F5005024DC /* WeatherDemo */ = {
 			isa = PBXGroup;
 			children = (
+				248E358E204AE39B00837167 /* Utilis */,
 				24C4476D204A5C8E005024DC /* Networking */,
 				24C44775204A5C8E005024DC /* Models */,
 				24C44770204A5C8E005024DC /* ViewModels */,
 				24C44773204A5C8E005024DC /* views */,
-				24C44765204A5C66005024DC /* WeatherViewController.swift */,
 				24C44715204A43F5005024DC /* AppDelegate.swift */,
+				24C44765204A5C66005024DC /* WeatherViewController.swift */,
+				248E358C204ACBE500837167 /* WeatherDetailViewController.swift */,
 				24C44719204A43F5005024DC /* Main.storyboard */,
 				248897AB204AB0E0008F9DFE /* Launch Screen.storyboard */,
 				24C4471C204A43F5005024DC /* Assets.xcassets */,
@@ -483,6 +497,8 @@
 				24C44716204A43F5005024DC /* AppDelegate.swift in Sources */,
 				24C44783204A5C8E005024DC /* Cloud.swift in Sources */,
 				24C44785204A5C8E005024DC /* Main.swift in Sources */,
+				248E3592204AE3AB00837167 /* Date+Customise.swift in Sources */,
+				248E358D204ACBE500837167 /* WeatherDetailViewController.swift in Sources */,
 				24C4477D204A5C8E005024DC /* APIService.swift in Sources */,
 				24C44781204A5C8E005024DC /* WeatherTableViewCell.swift in Sources */,
 				24C44784204A5C8E005024DC /* Weather.swift in Sources */,
