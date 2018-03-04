@@ -7,7 +7,35 @@
 		<key>WeatherDemo.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>WeatherDemoTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>6</integer>
+		</dict>
+		<key>WeatherDemoUITests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>24C44711204A43F5005024DC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>24C44725204A43F6005024DC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>24C44730204A43F6005024DC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

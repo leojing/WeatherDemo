@@ -6,8 +6,6 @@
 //  Copyright © 2018 JINGLUO. All rights reserved.
 //
 
-// //http://api.openweathermap.org/data/2.5/weather?id=2172797&appid=59dfd15b2c803e313d19d07be10aa6ac
-
 import Foundation
 import RxSwift
 import RxCocoa
