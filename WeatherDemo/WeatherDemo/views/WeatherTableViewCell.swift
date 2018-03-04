@@ -19,7 +19,7 @@ class WeatherTableViewCell: UITableViewCell {
     @IBOutlet weak var spinnerView: UIActivityIndicatorView!
     
     fileprivate var disposeBag = DisposeBag()
-    var viewModel: WeatherCellViewModel? {
+    var viewModel: WeatherDetailViewModel? {
         didSet {
             setupViewModelBinds()
         }
@@ -50,7 +50,7 @@ class WeatherTableViewCell: UITableViewCell {
             showAlertHandler = alertHandler
         }
         
-        viewModel = WeatherCellViewModel(cityId, APIClient())
+        viewModel = WeatherDetailViewModel(cityId, APIClient())
     }
     
     fileprivate func setupViewModelBinds() {
@@ -65,7 +65,7 @@ class WeatherTableViewCell: UITableViewCell {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { temp in
                 NSLog("current thread: %@, in file: %@, function: %@", Thread.current, #file, #function)
-                self.tempLabel.text = "\(temp!)℉"
+                self.tempLabel.text = "\(Int(temp!))℃"
                 self.contentView.layoutSubviews()
             }, onError: nil, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)

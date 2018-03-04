@@ -34,7 +34,7 @@ class WeatherViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifiers.showWeatherDetail,
             let destination = segue.destination as? WeatherDetailViewController {
-            let vm = sender as? WeatherCellViewModel
+            let vm = sender as? WeatherDetailViewModel
             destination.viewModel = vm
         }
     }
@@ -64,7 +64,6 @@ class WeatherViewController: UITableViewController {
         tableView.dataSource = nil
         viewModel?.citiesData.asObservable()
             .bind(to: tableView.rx.items(cellIdentifier: WeatherTableViewCell.reuseId(), cellType: WeatherTableViewCell.self)) { (row, element, cell) in
-//                NSLog("current thread: %@, in file: %@, function: %@", Thread.current, #file, #function)
                 cell.configureCell(element, showAlert: { message in
                     self.showAlert(message)
                 })

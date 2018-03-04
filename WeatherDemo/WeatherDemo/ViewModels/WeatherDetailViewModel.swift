@@ -10,7 +10,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-class WeatherCellViewModel {
+class WeatherDetailViewModel {
     
     fileprivate enum AlertMessages {
         static let emptyAPIService = "Must init an APIService"

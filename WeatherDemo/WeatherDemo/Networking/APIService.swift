@@ -75,7 +75,7 @@ extension APIConfig {
     var parameters: [String: String]? {
         switch self {
         case .weather(let id):
-            return ["id": id, "appid": APIConfig.API_KEY]
+            return ["id": id, "appid": APIConfig.API_KEY, "units": "metric"]
         }
     }
     
