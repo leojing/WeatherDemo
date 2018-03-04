@@ -14,7 +14,6 @@ import ObjectMapper
 class WeatherDemoTests: XCTestCase {
     
     fileprivate let disposeBag = DisposeBag()
-    var viewModel: WeatherCellViewModel?
 
     override func setUp() {
         super.setUp()
@@ -27,47 +26,43 @@ class WeatherDemoTests: XCTestCase {
     }
     
     func testApiClientSuccess() {
-        viewModel = WeatherCellViewModel("2147714", MockAPIClient())
-        
-        viewModel?.cityName.asObservable()
-            .subscribe(onNext: { name in
-//                XCTAssertEqual(name, "Sydney")
+        MockAPIClient().fetchWeatherInfo(APIConfig.weather(id: "2147714"))
+            .asObservable()
+            .subscribe(onNext: { status in
+                switch status {
+                case .success(let w):
+                    let weather = w as? Weather
+                    XCTAssertEqual(weather?.name, "Sydney")
+                    XCTAssertEqual(weather?.main?.temp, 298.15)
+                    XCTAssertEqual(weather?.wind?.speed, 7.7)
+                    XCTAssertEqual(weather?.sys?.sunrise, 1520019878)
+
+                case .fail(let error):
+                    print(error.localizedDescription)
+                }
             }, onError: nil, onCompleted: nil, onDisposed: nil)
         .disposed(by: disposeBag)
-        
-//        viewModel?.title.asObservable()
-//            .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-//            .subscribe(onNext: { title in
-//                XCTAssertEqual(title, "About Canada")
-//            }, onError: nil, onCompleted: nil, onDisposed: nil)
-//            .disposed(by: disposeBag)
-//
-//        viewModel?.listData.asObservable()
-//            .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-//            .subscribe(onNext: { rows in
-//                XCTAssertEqual(rows.first?.descriptionField, "Beavers are second only to humans in their ability to manipulate and change their environment. They can measure up to 1.3 metres long. A group of beavers is called a colony")
-//            }, onError: nil, onCompleted: nil, onDisposed: nil)
-//            .disposed(by: disposeBag)
     }
     
     func testApiClientEmpty() {
-//        let mockApiClient = MockAPIClient()
-//        mockApiClient.jsonFileName = .mockDataEmpty
-//        viewModel = WeatherCellViewModel("2147714", mockApiClient)
-        
-//        viewModel?.title.asObservable()
-//            .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-//            .subscribe(onNext: { title in
-//                XCTAssertEqual(title, "About Canada")
-//            }, onError: nil, onCompleted: nil, onDisposed: nil)
-//            .disposed(by: disposeBag)
-//
-//        viewModel?.listData.asObservable()
-//            .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-//            .subscribe(onNext: { rows in
-//                XCTAssertNil(rows.first)
-//            }, onError: nil, onCompleted: nil, onDisposed: nil)
-//            .disposed(by: disposeBag)
+        let apiClient = MockAPIClient()
+        apiClient.jsonFileName = .mockDataEmpty
+        apiClient.fetchWeatherInfo(APIConfig.weather(id: "2147714"))
+        .asObservable()
+            .subscribe(onNext: { status in
+                switch status {
+                case .success(let w):
+                    let weather = w as? Weather
+                    XCTAssertEqual(weather?.name, "Sydney")
+                    XCTAssertNil(weather?.weatherDetail)
+                    XCTAssertNil(weather?.main)
+                    XCTAssertNil(weather?.sys)
+                    
+                case .fail(let error):
+                    print(error.localizedDescription)
+                }
+            }, onError: nil, onCompleted: nil, onDisposed: nil)
+        .disposed(by: disposeBag)
     }
 }
 
