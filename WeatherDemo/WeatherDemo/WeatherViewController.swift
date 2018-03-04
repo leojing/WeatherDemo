@@ -24,6 +24,7 @@ class WeatherViewController: UITableViewController {
         }
     }
 
+    // MARK: override func
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,6 +40,7 @@ class WeatherViewController: UITableViewController {
         }
     }
     
+    // MARK: set up UI
     fileprivate func setupUI() {
         let refreshButtonItem = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(refreshAction))
         navigationItem.rightBarButtonItem = refreshButtonItem
@@ -50,6 +52,7 @@ class WeatherViewController: UITableViewController {
         tableView.estimatedRowHeight = 40
         tableView.rowHeight = UITableViewAutomaticDimension
         
+        // tableview cell selected
         tableView.rx.itemSelected
             .subscribe(onNext: { indexPath in
                 let cell = self.tableView.cellForRow(at: indexPath) as! WeatherTableViewCell
@@ -58,6 +61,7 @@ class WeatherViewController: UITableViewController {
             }).disposed(by: disposeBag)
     }
     
+    // MARK: Bind ViewModel
     fileprivate func setupViewModelBinds() {
         
         // load tableview cells

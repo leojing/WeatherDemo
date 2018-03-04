@@ -27,6 +27,7 @@ class WeatherTableViewCell: UITableViewCell {
 
     fileprivate var showAlertHandler: ShowAlertHandler?
     
+    // MARK: override and basic static func
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -34,6 +35,7 @@ class WeatherTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
+        // To avoid multiple outdated subscriptions, we need to create new DisposeBag for each cell reuse
         disposeBag = DisposeBag()
     }
     
@@ -41,35 +43,41 @@ class WeatherTableViewCell: UITableViewCell {
         return String(describing: self)
     }
     
+    // MARK: configureCell with cityId, initial WeatherDetailViewModel with cityId to get remote detail data
     func configureCell(_ cityId: String?, showAlert alertHandler: ShowAlertHandler?) {
         guard let cityId = cityId else {
             return
         }
         
+        // showAlertHandler is assign "show alert view" method to ViewController
         if let alertHandler = alertHandler {
             showAlertHandler = alertHandler
         }
         
+        // init viewModel
         viewModel = WeatherDetailViewModel(cityId, APIClient())
     }
     
+    // MARK: set up ViewModel binds
     fileprivate func setupViewModelBinds() {
+        // update city name
         viewModel?.cityName.asObservable()
             .filter{ $0 != nil }
             .observeOn(MainScheduler.instance)
             .bind(to: cityLabel.rx.text)
             .disposed(by: disposeBag)
         
+        // update temperature
         viewModel?.temperature.asObservable()
             .filter{ $0 != nil }
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { temp in
                 NSLog("current thread: %@, in file: %@, function: %@", Thread.current, #file, #function)
                 self.tempLabel.text = "\(Int(temp!))℃"
-                self.contentView.layoutSubviews()
             }, onError: nil, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
         
+        // update isProgress status to make the activity indicator spin or not
         viewModel?.isProgress
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { isprogress in

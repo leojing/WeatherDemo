@@ -23,15 +23,20 @@ class WeatherListViewModel {
     var citiesData = Variable<[String]>([])
     var alertMessage = BehaviorRelay<String?>(value: nil)
 
+    // MARK: init with city id list and APIService
     init(_ cityList: [String]?) {
         citiesList = cityList
-        bindCitiesInfo(citiesList)
+        fetchCitiesInfo(citiesList)
     }
     
+    // MARK: init with APIService
     init(_ apiService: APIService?) {
+        fatalError("Not implement")
     }
 
-    fileprivate func bindCitiesInfo(_ cityList: [String]?) {
+    // MARK: fetch citiesData by passing cityList, because we don't have to get date from remote. So we just did a simple assignment.
+    // In the future if needed, we can fetch data from remote by APIService.
+    fileprivate func fetchCitiesInfo(_ cityList: [String]?) {
         guard let cityList = cityList else {
             self.alertMessage.accept(AlertMessages.emptyList)
             return
@@ -40,8 +45,9 @@ class WeatherListViewModel {
         citiesData.value = cityList
     }
     
+    // MARK: refetch data
     func refreshData() {
-        bindCitiesInfo(citiesList)
+        fetchCitiesInfo(citiesList)
     }
 }
 

@@ -27,6 +27,7 @@ class WeatherDetailViewModel {
     var isProgress = BehaviorRelay<Bool>(value: true)
     var alertMessage = BehaviorRelay<String?>(value: nil)
 
+    // MARK: init with city id and APIService
     init(_ cityId: String, _ apiService: APIService?) {
         bindWeatherData()
         
@@ -35,11 +36,13 @@ class WeatherDetailViewModel {
         fetchWeatherInfo(apiService)
     }
     
+    // MARK: fetch Weather info from remote server
     fileprivate func fetchWeatherInfo(_ apiService: APIService?) {
         guard let service = apiService else {
             fatalError(AlertMessages.emptyAPIService)
         }
         
+        // activity indicator start animation
         isProgress.accept(true)
         
         let apiConfig = APIConfig.weather(id: cityID)
@@ -48,6 +51,7 @@ class WeatherDetailViewModel {
             .subscribe(onNext: { status in
                 NSLog("current thread: %@, in file: %@, function: %@", Thread.current, #file, #function)
 
+                // activity indicator start animation
                 self.isProgress.accept(false)
                 
                 switch status {
@@ -62,6 +66,7 @@ class WeatherDetailViewModel {
         .disposed(by: disposeBag)
     }
     
+    // MARK: bind weather with cityName and temperature, make sure when weather value changes, can get new cityName and temperature value
     fileprivate func bindWeatherData() {
         weather.asObservable()
             .observeOn(concurrentScheduler)

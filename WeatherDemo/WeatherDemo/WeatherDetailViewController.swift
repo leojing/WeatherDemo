@@ -26,17 +26,20 @@ class WeatherDetailViewController: UIViewController {
     fileprivate var disposeBag = DisposeBag()
     var viewModel: WeatherDetailViewModel?
     
+    // MARK: override func
     override func viewDidLoad() {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(WeatherDetailViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
 
         setupViewModelBinds()
-        
+        // set weather icon imageview animated
         animationForIconView(iconImageView)
     }
     
+    // MARK: Bind ViewModel
     fileprivate func setupViewModelBinds() {
+        // update navigation bar title
         viewModel?.cityName.asObservable()
             .filter{ $0 != nil }
             .observeOn(MainScheduler.instance)
@@ -45,6 +48,7 @@ class WeatherDetailViewController: UIViewController {
             }, onError: nil, onCompleted: nil, onDisposed: nil)
         .disposed(by: disposeBag)
         
+        // bind weather to detail UI elements
         viewModel?.weather.asObservable()
             .subscribeOn(MainScheduler.instance)
             .subscribe(onNext: { weather in
@@ -53,6 +57,7 @@ class WeatherDetailViewController: UIViewController {
         .disposed(by: disposeBag)
     }
     
+    // MARK: update UI elements
     fileprivate func updateUI(_ weather: Weather?) {
         self.tempLabel.text = self.tranformTemp(weather?.main?.temp)
         self.summeryLabel.text = weather?.weatherDetail?.first?.descriptionField
@@ -70,7 +75,6 @@ class WeatherDetailViewController: UIViewController {
     }
     
     // MARK: Actions
-    
     fileprivate func animationForIconView(_ icon: UIImageView) {
         UIView.animate(withDuration: 1, animations: {
             icon.frame.size.width += 10
