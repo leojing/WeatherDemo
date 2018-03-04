@@ -11,6 +11,7 @@ end
 target "WeatherDemo" do
 	shared_pods
     pod 'Alamofire'
+    pod 'Kingfisher'
 end
 
 target "WeatherDemoTests" do
